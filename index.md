@@ -128,7 +128,7 @@ Some applications require the JAVA_HOME variable. Follow the steps below to crea
 
 2. Copy and paste the password generated during jenkins initialization under Administrator password and click on continue.
 
-"C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword"
+- **"C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword"**
 
 ###  Getting Started Jenkins
 
@@ -177,39 +177,59 @@ Click on **Start using Jenkins**
 <img width="1432" alt="image" src="https://user-images.githubusercontent.com/84066151/168872577-6dbdf5ef-f511-4828-b0fd-604bd408efb9.png">
 
 
-### Create Multibranch pipeline with Git
+### Create Freestyle project
+
+1. Click on **Create a Job or New Item**
+
+![image](https://user-images.githubusercontent.com/84066151/170549265-3bf3a214-649f-4042-ae06-0552ace83bc4.png)
+
+2. Enter Job Name: **FirstJenkinsJob** and Select **Freestyle Project** and Click **OK**
+
+![image](https://user-images.githubusercontent.com/84066151/170549715-e17da163-a016-41ae-a845-3800b3df9822.png)
+
+3. Setup Job Configurations 
+
+![image](https://user-images.githubusercontent.com/84066151/170550859-748add6e-c79c-4021-8b9b-7a0e29536011.png)
+![image](https://user-images.githubusercontent.com/84066151/170550946-540b65b9-c9b6-4902-8105-4a055275f62d.png)
+![image](https://user-images.githubusercontent.com/84066151/170551108-ad3a181f-c978-4280-b2eb-9b636626b9db.png)
+![image](https://user-images.githubusercontent.com/84066151/170551291-24399e7b-5d3e-42dd-b200-0052178af24b.png)
+![image](https://user-images.githubusercontent.com/84066151/170551441-82f3e3c1-0eb4-4116-9354-c8eacb9b830f.png)
+
+4. After Saving our job configuration, On Dashboard Page we can see our FirstJenkinsJob
+
+![image](https://user-images.githubusercontent.com/84066151/170552032-93a60f01-f7f2-4191-9b35-fd1b3ef89a6f.png)
+
+5. Click on FirstJenkinsJob and Click on **Build now**
+
+![image](https://user-images.githubusercontent.com/84066151/170552316-47e729e6-b424-4224-8b06-51939e3e1268.png)
+
+We can monitor **Build History**
+
+![image](https://user-images.githubusercontent.com/84066151/170552560-6be6f728-d114-4b41-9a38-51269c18b405.png)
+
+6. Check the Build Status and Results.
+
+![image](https://user-images.githubusercontent.com/84066151/170552782-32c76d9a-d9fe-4f8c-a6a9-1adcc18887d9.png)
+
+7. Go back to Dashboard page and we can check the build duration and status.
+
+![image](https://user-images.githubusercontent.com/84066151/170553152-7cbf5e66-6130-491c-9894-82c2d5cc1403.png)
 
 
+### Email configuration
+
+1. On Jenkins Dashboard Page, Click on **Manage Jenkins**
+2. Click on **Configure System**
+
+![image](https://user-images.githubusercontent.com/84066151/170557242-ff00723c-185e-420f-aac3-9ad49ddbb197.png)
+
+3. Scroll to the Botton of the page and Find **Email Notification** section and enter the following details.
+
+![image](https://user-images.githubusercontent.com/84066151/170554792-ac8c60de-721e-4a0d-8dba-7bba523c3743.png)
 
 
-### Markdown
+4. After adding the email notification details, click on **Test Configuration** and **Apply/Save**
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+![image](https://user-images.githubusercontent.com/84066151/170557678-6a5c41f1-af06-40c6-9560-cfa7f2d55d6a.png)
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sarathtd406/jenkins-tutorial-101/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+5. Configure Editable Email Notification for project.
