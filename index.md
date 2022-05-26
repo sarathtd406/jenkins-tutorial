@@ -5,6 +5,78 @@
 
 #### Let's get started !!
 
+Jenkins runs on Java, you need either latest version of Java Development Kit (JDK) or Java Runtime Environment (JRE).
+
+- Open a command prompt by typing cmd in the search bar and press Enter.
+- Run the following command:
+```java -version```
+
+![image](https://user-images.githubusercontent.com/84066151/170506498-31b4f64d-ea78-48f8-a9c1-12f7494d846f.png)
+
+If Java isn't installed, the output is a message stating that Java isn't recognized as an internal or external command.
+
+### Download Java
+Download the latest Java Development Kit installation file for Windows 10 to have the latest features and bug fixes.
+
+- Using your preferred web browser, navigate to the [Oracle Java Downloads page](https://www.oracle.com/java/technologies/downloads).
+- On the Downloads page, click the x64 Installer download link under the Windows category.
+
+![image](https://user-images.githubusercontent.com/84066151/170507901-cc93af1b-1eb7-4cac-8ac5-d7b522555ad0.png)
+
+
+### Install Java
+
+Step 1: Run the Downloaded File
+Double-click the downloaded file to start the installation.
+
+Step 2: Configure the Installation Wizard. (follow the configuration wizard with default settings)
+
+### Set Environmental Variables in Java
+
+**Step 1**: Add Java to System Variables
+
+1. Open the Start menu and search for environment variables.
+
+2. Select the Edit the system environment variables result.
+
+![image](https://user-images.githubusercontent.com/84066151/170520130-73d4fe6e-3b6d-4004-a580-8aab48757285.png)
+
+3. In the System Properties window, under the Advanced tab, click **Environment Variable**
+
+![image](https://user-images.githubusercontent.com/84066151/170520332-44b6d5cf-54ff-4ce2-8dda-07855850c599.png)
+
+4. Under the System variables category, select the Path variable and click Edit:
+
+![image](https://user-images.githubusercontent.com/84066151/170520678-ed52d4d4-816a-438f-81d2-6d74d4779f27.png)
+
+5. Click the New button and enter the path to the Java bin directory:
+
+![image](https://user-images.githubusercontent.com/84066151/170521052-a3a2899f-9d21-46af-aab3-6cf69d1f4f19.png)
+
+6. Click OK to save the changes and exit the variable editing window.
+
+
+**Step 2**: Add JAVA_HOME Variable
+
+Some applications require the JAVA_HOME variable. Follow the steps below to create the variable:
+
+1. In the Environment Variables window, under the System variables category, click the New… button to create a new variable.
+
+![image](https://user-images.githubusercontent.com/84066151/170521370-849c9955-8b58-43df-804d-1b8e23f91683.png)
+
+2. Name the variable as JAVA_HOME.
+
+![image](https://user-images.githubusercontent.com/84066151/170521817-da7aec1b-d1f8-4844-8c16-b7e4ab01d202.png)
+
+
+### Test the Java Installation
+
+- Run the following command:
+```java -version```
+
+![image](https://user-images.githubusercontent.com/84066151/170522262-756b59b3-c522-47d3-a195-07c17fa75f3b.png)
+
+
 ### Jenkins docker image
 
 First, let us check the offical jenkins docker image from docker hub website [Docker Hub](https://hub.docker.com/search?q=jenkins)
