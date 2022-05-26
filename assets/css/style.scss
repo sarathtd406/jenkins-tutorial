@@ -1,0 +1,23 @@
+---
+---
+
+@import 'jekyll-theme-leap-day';
+
+#banner .fork {
+
+display: none;
+
+}
+
+#banner .button {
+
+display: none;
+
+}
+
+#banner #logo {
+    background: url(../images/jenkins-official.svg);
+    height: 77px;
+    width: 256px;
+    top: -14px;
+}
