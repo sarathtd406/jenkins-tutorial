@@ -128,8 +128,7 @@ Some applications require the JAVA_HOME variable. Follow the steps below to crea
 
 2. Copy and paste the password generated during jenkins initialization under Administrator password and click on continue.
 
-```C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword```
-
+"C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword"
 
 ###  Getting Started Jenkins
 
