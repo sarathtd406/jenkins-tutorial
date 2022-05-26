@@ -31,7 +31,7 @@ Double-click the downloaded file to start the installation.
 
 Step 2: Configure the Installation Wizard. (follow the configuration wizard with default settings)
 
-### Set Environmental Variables in Java
+### Set Env Variables
 
 **Step 1**: Add Java to System Variables
 
@@ -69,7 +69,7 @@ Some applications require the JAVA_HOME variable. Follow the steps below to crea
 ![image](https://user-images.githubusercontent.com/84066151/170521817-da7aec1b-d1f8-4844-8c16-b7e4ab01d202.png)
 
 
-### Test the Java Installation
+### Verify Java Installation
 
 - Run the following command:
 ```java -version```
@@ -77,121 +77,58 @@ Some applications require the JAVA_HOME variable. Follow the steps below to crea
 ![image](https://user-images.githubusercontent.com/84066151/170522262-756b59b3-c522-47d3-a195-07c17fa75f3b.png)
 
 
-### Jenkins docker image
+### Install Jenkins
 
-First, let us check the offical jenkins docker image from docker hub website [Docker Hub](https://hub.docker.com/search?q=jenkins)
+1. Download official Jenkins from [download page](https://www.jenkins.io/download/). 
 
-As the Jenkins official Docker image is deprecated, we need to use the next docker image from the search list. This jenkins/jenkins image is maintained by Jenkins community and continuously updated.
+![image](https://user-images.githubusercontent.com/84066151/170524843-4a1630de-0139-4050-8e11-9fc381e76734.png)
 
-<img width="1214" alt="image" src="https://user-images.githubusercontent.com/84066151/168812272-93ef9384-8d16-4364-8474-227ef813978b.png">
+2. Once the download is complete, run the jenkins.msi installation file.
 
-Direct link to jenkins docker image. [jenkins/jenkins](https://hub.docker.com/r/jenkins/jenkins)
+3. The setup wizard starts. Click Next to proceed.
 
-### Start Docker Container
+![image](https://user-images.githubusercontent.com/84066151/170525724-2914db4a-5e74-42e2-8afb-f975975847d9.png)
 
-We can start Jenkins container using below command. Before that, **let's understand the command**.
+4. Select the install destination folder and click Next to continue.
 
-1. The ```docker run``` command first creates a writeable container layer over the specified image, and then starts it using the specified command. <br></br>
-2. We are exposing jenkins application to port 8080. Basically jenkins runs on tomcat which uses port 8080. Jenkins container also by default runs on port 8080. <br></br>
-3. We are exposing another port 50000 which will used when we connect agents to the controller (Master/Slave communication). This will enable Jenkins to bind slaves incase if we add some in future. <br></br>
-4. ```-d``` is an optional command used with ```docker run``` to run the container in background and print container ID. (Run in detach mode) <br></br>
-5. ```-v``` is an optional command used with ```docker run``` to bind mount a volume to the container. Here we are using a named volume called ```jenkins_home``` which will be automatically created in your local machine. This ```jenkins_home``` directory is binded to ```/var/jenkins_home``` which resides inside jenkins container. This volumne mount is need to persit the data even when jenkins container gets restarted or deleted and recreated. <br></br>
-6. Finally, docker image name that we are using. ```jenkins/jenkins:lts``` with latest tag. <br></br>
+![image](https://user-images.githubusercontent.com/84066151/170525886-b0cc4049-5334-4ce2-9b37-2be2f38df38b.png)
+
+5. Under the **Run service as a local or domain user option**, enter the domain username and password for the user account you want to run Jenkins with. Click **Test Credentials** to verify the login data, then click **Next** to proceed.
+
+![image](https://user-images.githubusercontent.com/84066151/170528165-2ed6986c-3966-472a-8d83-cc7f1a7be883.png)
+
+6. Enter the port number you want Jenkins to run on. Click **Test Port** to check if the selected port is available, then click **Next** to continue.
+
+![image](https://user-images.githubusercontent.com/84066151/170528556-889e0228-5a61-4a0a-b46b-4aff3c2bd139.png)
+
+7. Select the directory where Java is installed on your system and click Next to proceed.
+
+![image](https://user-images.githubusercontent.com/84066151/170528834-9bb5b1ee-e5f2-497a-b71a-ffd8d8e732dc.png)
+
+8. Select the features you want to install with Jenkins and click Next to continue.
+
+![image](https://user-images.githubusercontent.com/84066151/170528962-4d67a0c9-ff72-4147-aa56-37b299a2f4f0.png)
+
+9. Click Install to start the installation process.
+
+![image](https://user-images.githubusercontent.com/84066151/170529091-62772ada-bc4d-4203-a1b2-f1d1a3eb1cea.png)
+
+10. Once the installation is complete, click Finish to exit the install wizard.
+
+![image](https://user-images.githubusercontent.com/84066151/170529220-00e5586c-31cd-4658-97af-249de2f81ddc.png)
 
 
-```
-docker run -p 8080:8080 -p 50000:50000 -d -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
-```
 
-**reponse:**
-
-```ruby
-
-$ docker run -p 8080:8080 -p 50000:50000 -d -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
-
-Unable to find image 'jenkins/jenkins:lts' locally
-lts: Pulling from jenkins/jenkins
-6aefca2dc61d: Pull complete 
-e1108b695755: Pull complete 
-4985c9eaee97: Pull complete 
-8228d7831e76: Pull complete 
-9519512ddfd4: Pull complete 
-0733f6b69c1e: Pull complete 
-b336c88402cb: Pull complete 
-cb7dc9e53b9a: Pull complete 
-e07562e27aae: Pull complete 
-459456f5f3a7: Pull complete 
-bba697df7a23: Pull complete 
-fd343a6d7b0a: Pull complete 
-064f97281dfa: Pull complete 
-105e1c5c62b9: Pull complete 
-47468e3b9259: Pull complete 
-0c33547f2be5: Pull complete 
-6ae3378125de: Pull complete 
-Digest: sha256:3dec77ef6636c4f4068f855fb2857bd3e8942b12bdd9c7429bd64ab8bc392527
-Status: Downloaded newer image for jenkins/jenkins:lts
-cda0edfd1a300d9947e0a9369fc1317733f7f4324d1f27e1d4fc42e6b0d52167
-
-```
-
-### Verify container status
-
-Use ```docker ps``` command to list the running docker containers. If the container is not listed, use ```docker ps -a``` command to show all running and stopped containers.
-
-```ruby
-
-$ docker ps
-
-CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS          PORTS                                             
-cda0edfd1a30   jenkins/jenkins:lts   "/sbin/tini -- /usr/…"   11 minutes ago   Up 11 minutes   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp
-
-```
-
-### Verify container logs
-
-Use ```docker logs <CONTAINER ID>``` command to fetch the logs of a container.
-
-```ruby
-$ docker logs cda0edfd1a30
-
-Running from: /usr/share/jenkins/jenkins.war
-webroot: EnvVars.masterEnvVars.get("JENKINS_HOME")
-
-2022-05-17 16:23:16.507+0000 [id=35]	INFO	jenkins.install.SetupWizard#init: 
-
-*************************************************************
-*************************************************************
-*************************************************************
-
-Jenkins initial setup is required. An admin user has been created and a password generated.
-Please use the following password to proceed to installation:
-
-< password >
-
-This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
-
-*************************************************************
-*************************************************************
-*************************************************************
-
-2022-05-17 16:23:30.838+0000 [id=35]	INFO	jenkins.InitReactorRunner$1#onAttained: Completed initialization
-2022-05-17 16:23:30.857+0000 [id=23]	INFO	hudson.lifecycle.Lifecycle#onReady: Jenkins is fully up and running
-2022-05-17 16:23:31.919+0000 [id=49]	INFO	h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
-2022-05-17 16:23:31.921+0000 [id=49]	INFO	hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
-2022-05-17 16:23:31.927+0000 [id=49]	INFO	hudson.model.AsyncPeriodicWork#lambda$doRun$1: Finished Download metadata. 15,993 ms
-
-```
-
-**Here in above logs you can see that jenkins has started and initialized successfully and generated a configuration password to proceed further.**
+![image](https://user-images.githubusercontent.com/84066151/170546510-b68cd268-041e-4474-a5bc-e9300d9d7ab9.png)
 
 
 ### Login to Jenkins
 
-Let's open up the browser and type ```localhost:8080```. This is the port we exposed our jenkins container.
+1. Let's open up the browser and type ```localhost:8080```. This is the port we exposed our jenkins.
 
-Copy and paste the password generated during jenkins initialization under Administrator password and click on continue. (Check out the previous step to copy password)
+2. Copy and paste the password generated during jenkins initialization under Administrator password and click on continue.
 
-<img width="1150" alt="image" src="https://user-images.githubusercontent.com/84066151/168865737-8c99294f-21d0-4104-a89c-2369507ef4de.png">
+```C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword```
 
 
 ###  Getting Started Jenkins
